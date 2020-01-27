@@ -44,7 +44,11 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
 
 }
 
-
+bool Compare(RouteModel::Node *anode, RouteModel::Node *bnode) {
+    int f1 = anode->h_value + anode->g_value; // f1 = g1 + h1
+    int f2 = bnode->h_value + bnode->g_value; // f1 = g1 + h1
+    return f1>f2;
+}
 // TODO 5: Complete the NextNode method to sort the open list and return the next node.
 // Tips:
 // - Sort the open_list according to the sum of the h value and g value.
@@ -53,7 +57,10 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
 // - Return the pointer.
 
 RouteModel::Node *RoutePlanner::NextNode() {
-
+    sort(open_list.begin(), open_list.end(), Compare);
+    RouteModel::Node *node = open_list.back();
+    open_list.pop_back();
+    return node;
 }
 
 
