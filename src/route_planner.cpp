@@ -44,8 +44,8 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
 }
 
 bool Compare(RouteModel::Node *anode, RouteModel::Node *bnode) {
-    int f1 = anode->h_value + anode->g_value; // f1 = g1 + h1
-    int f2 = bnode->h_value + bnode->g_value; // f1 = g1 + h1
+    float f1 = anode->h_value + anode->g_value; // f1 = g1 + h1
+    float f2 = bnode->h_value + bnode->g_value; // f2 = g2 + h2
     return f1>f2;
 }
 // TODO 5: Complete the NextNode method to sort the open list and return the next node.
@@ -61,7 +61,6 @@ RouteModel::Node *RoutePlanner::NextNode() {
     open_list.pop_back();
     return node;
 }
-
 
 // TODO 6: Complete the ConstructFinalPath method to return the final path found from your A* search.
 // Tips:
