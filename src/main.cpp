@@ -58,9 +58,19 @@ int main(int argc, const char **argv)
     float start_x = 0.0, start_y = 0.0, end_x = 0.0, end_y = 0.0;
     std::cout << "Enter coordinates for starting point (x y):";
     std::cin >> start_x >> start_y;
+    if (start_x < 0.0 || start_y > 100.0) {
+        std::cout << "Input off limits. Exiting" << "\n";
+        std::cin.clear();
+        return 1;
+    }
 
     std::cout << "Enter coordinates for ending point (x y):";
     std::cin >> end_x >> end_y;
+    if (end_x < 0.0 || end_y > 100.0) {
+        std::cout << "Input off limits. Exiting" << "\n";
+        std::cin.clear();
+        return 1;
+    }
 
     // Build Model.
     RouteModel model{osm_data};
